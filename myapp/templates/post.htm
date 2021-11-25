@@ -1,0 +1,41 @@
+{% extends 'base.htm' %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="title">{{post.title}}</h1>
+    <small>Posted at {{post.date}}</small>
+    <p><strong>{{post.intro}}</strong></p>
+    <p>{{post.body}}</p>
+</div>
+
+<hr>
+<h1 class="subtitle">Thoughts</h1>
+
+{% for comment in post.comments.all %}
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{comment.name}}</h5>
+          <p class="card-text">{{comment.body}}</p>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+      </div>
+    </div>
+{% endfor %}
+
+
+
+
+<div class="container">
+    <h1 class="subtitle">Share Your Thoughts !!!!</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn-success" value="Add Comment">
+    </form>
+</div>
+
+
+{% endblock %}

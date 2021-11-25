@@ -1,0 +1,21 @@
+{% extends 'base.htm' %}
+
+{% block content %}
+{% for post in posts %}
+<div class="container mt-5">
+    <div class="card text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.intro}}</p>
+          <a href="{% url 'post' post.slug  %}" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+          {{post.date}}
+        </div>
+      </div>
+</div>
+{% endfor %}
+{% endblock %}
